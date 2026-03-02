@@ -113,7 +113,7 @@ const languagesData = [
             exercises: 10,
             projects: 4
         },
-        isActive: false,
+        isActive: false, // Coming soon
         isPopular: false,
         isNew: false,
         progress: 0,
@@ -181,7 +181,6 @@ const languagesData = [
     }
 ];
 
-// State management
 let currentUser = {
     isLoggedIn: false,
     name: 'Guest'
