@@ -260,7 +260,6 @@ function displayLanguages(languages) {
     });
 }
 
-// Create language card element
 function createLanguageCard(language) {
     const card = document.createElement('div');
     card.className = `language-card ${!language.isActive ? 'coming-soon' : ''}`;
