@@ -206,7 +206,6 @@ window.addEventListener('load', function () {
     const subtitle = document.querySelector('.hero-subtitle');
     if (subtitle) {
         const originalText = subtitle.textContent;
-        // Optional: Add typing effect here if desired
     }
 });
 
