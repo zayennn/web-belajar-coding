@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => {
                 style.remove();
             }, 100);
-        }, 8000); // Restart every 8 seconds to prevent any potential stuttering
+        }, 8000);
     }
 
     const logoAlt = document.querySelector('.logo-gradient.glare-smooth');
