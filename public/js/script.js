@@ -180,7 +180,6 @@ document.addEventListener('DOMContentLoaded', function () {
         window.requestAnimationFrame(step);
     }
 
-    // Add hover effect for cards
     document.querySelectorAll('.feature-card, .language-card, .audience-card, .testimonial-card').forEach(card => {
         card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-5px)';
