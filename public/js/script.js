@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Close menu when clicking outside
     document.addEventListener('click', function (event) {
         if (navMenu && navToggle) {
             if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
