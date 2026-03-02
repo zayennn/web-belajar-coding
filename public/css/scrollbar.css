@@ -1,0 +1,205 @@
+
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-light: #64748b;
+    --accent-primary: #6366f1;
+    --accent-hover: #4f46e5;
+    --accent-light: #e0e7ff;
+    --border-color: #e2e8f0;
+    --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+    --navbar-bg: rgba(255, 255, 255, 0.9);
+    --code-bg: #1e1e2f;
+    --code-text: #f8fafc;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --toggle-bg: #e2e8f0;
+    --overlay-bg: #0f172a;
+}
+
+.dark-theme {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-light: #94a3b8;
+    --accent-primary: #818cf8;
+    --accent-hover: #6366f1;
+    --accent-light: #312e81;
+    --border-color: #334155;
+    --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    --navbar-bg: rgba(15, 23, 42, 0.9);
+    --code-bg: #0a0a1a;
+    --code-text: #f8fafc;
+    --toggle-bg: #334155;
+    --overlay-bg: #02000c;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--accent-primary), #8b5cf6);
+    border-radius: 10px;
+    border: 2px solid var(--bg-secondary);
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #8b5cf6, var(--accent-hover));
+    transform: scale(1.1);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(135deg, var(--accent-hover), #8b5cf6);
+}
+
+/* Scrollbar corner (untuk ketika ada horizontal dan vertical scroll) */
+::-webkit-scrollbar-corner {
+    background: var(--bg-secondary);
+}
+
+/* Untuk Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) var(--bg-secondary);
+}
+
+/* Dark theme specific scrollbar adjustments */
+.dark-theme ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #818cf8, #a78bfa);
+    border: 2px solid var(--bg-secondary);
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #a78bfa, #c084fc);
+}
+
+/* Untuk Internet Explorer dan Edge Legacy */
+body {
+    -ms-overflow-style: none; /* Hide default scrollbar */
+}
+
+/* Opsi 2: Scrollbar dengan desain lebih minimalis */
+.scrollbar-minimal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollbar-minimal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollbar-minimal::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 20px;
+    border: none;
+}
+
+.scrollbar-minimal::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
+}
+
+/* Opsi 3: Scrollbar dengan efek glow */
+.scrollbar-glow::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-primary);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.scrollbar-glow::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 15px var(--accent-primary);
+}
+
+/* Opsi 4: Scrollbar dengan gradient yang sama seperti brand */
+.scrollbar-brand::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, 
+        #6366f1 0%,
+        #8b5cf6 30%, 
+        #f97316 70%, 
+        #6366f1 100%);
+    background-size: 200% 200%;
+    animation: scrollbarGradient 5s ease infinite;
+}
+
+@keyframes scrollbarGradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* Untuk elemen yang memiliki overflow scroll sendiri */
+.custom-scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.custom-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 10px;
+    border: 1px solid var(--bg-secondary);
+}
+
+/* Hide scrollbar tapi tetap bisa scroll (opsional) */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Scrollbar untuk horizontal scroll */
+::-webkit-scrollbar:horizontal {
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: linear-gradient(90deg, var(--accent-primary), #8b5cf6);
+}
+
+/* Responsive scrollbar */
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-width: 1px;
+    }
+}
+
+@media (max-width: 480px) {
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+}
