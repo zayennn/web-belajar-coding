@@ -208,7 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeNavbar() {
     updateNavbarAuth();
     
-    // Mobile menu toggle
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     
