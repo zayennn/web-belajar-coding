@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (runButton && outputDiv && editorContent) {
         runButton.addEventListener('click', function () {
-            // Simulate code execution
             const code = editorContent.innerText;
 
             if (code.includes('println') || code.includes('print')) {
