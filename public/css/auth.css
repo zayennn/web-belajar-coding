@@ -48,132 +48,11 @@
 }
 
 * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-primary) var(--bg-secondary);
-}
-
-.dark-theme ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #818cf8, #a78bfa);
-    border: 2px solid var(--bg-secondary);
-}
-
-.dark-theme ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #a78bfa, #c084fc);
-}
-
-body {
-    -ms-overflow-style: none;
-}
-
-.scrollbar-minimal::-webkit-scrollbar {
-    width: 8px;
-}
-
-.scrollbar-minimal::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.scrollbar-minimal::-webkit-scrollbar-thumb {
-    background: var(--accent-primary);
-    border-radius: 20px;
-    border: none;
-}
-
-.scrollbar-minimal::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-hover);
-}
-
-.scrollbar-glow::-webkit-scrollbar-thumb {
-    background: var(--accent-primary);
-    box-shadow: 0 0 10px var(--accent-primary);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.scrollbar-glow::-webkit-scrollbar-thumb:hover {
-    box-shadow: 0 0 15px var(--accent-primary);
-}
-
-.scrollbar-brand::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, 
-        #6366f1 0%,
-        #8b5cf6 30%, 
-        #f97316 70%, 
-        #6366f1 100%);
-    background-size: 200% 200%;
-    animation: scrollbarGradient 5s ease infinite;
-}
-
-@keyframes scrollbarGradient {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
-
-.custom-scroll {
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.custom-scroll::-webkit-scrollbar {
-    width: 6px;
-}
-
-.custom-scroll::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-    border-radius: 10px;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb {
-    background: var(--accent-primary);
-    border-radius: 10px;
-    border: 1px solid var(--bg-secondary);
-}
-
-.hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
-::-webkit-scrollbar:horizontal {
-    height: 8px;
-}
-
-::-webkit-scrollbar-thumb:horizontal {
-    background: linear-gradient(90deg, var(--accent-primary), #8b5cf6);
-}
-
-@media (max-width: 768px) {
-    ::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        border-width: 1px;
-    }
-}
-
-@media (max-width: 480px) {
-    ::-webkit-scrollbar {
-        width: 4px;
-        height: 4px;
-    }
-}
-
-* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) var(--bg-secondary);
 }
 
 body {
@@ -186,9 +65,10 @@ body {
     justify-content: center;
     position: relative;
     overflow-x: hidden;
+    -ms-overflow-style: none;
 }
 
-/* Background Gradient biasa (no animation) */
+/* Background Gradient */
 body::before {
     content: '';
     position: absolute;
@@ -234,7 +114,7 @@ body::before {
     font-size: 1.2rem;
 }
 
-/* Auth Card dengan efek Glare */
+/* Auth Card */
 .auth-card {
     background: var(--bg-card);
     border-radius: 20px;
@@ -245,6 +125,7 @@ body::before {
     animation: slideUp 0.6s ease-out;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
 }
 
 /* Efek Glare untuk Auth Card */
@@ -259,6 +140,24 @@ body::before {
     transform: rotate(25deg);
     animation: cardGlare 6s infinite;
     pointer-events: none;
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.03) 45%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.03) 55%,
+        transparent 60%
+    );
+    transform: translateX(-100%);
+    animation: shimmer 4s infinite;
+    pointer-events: none;
+    z-index: 1;
 }
 
 @keyframes cardGlare {
@@ -279,10 +178,27 @@ body::before {
     }
 }
 
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    20% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
 /* Variasi untuk register card */
 .auth-card.register::after {
     background: rgba(0, 255, 157, 0.03);
     animation: cardGlare 7s infinite 1s;
+}
+
+/* Hover effect untuk card */
+.auth-card:hover::before {
+    animation: shimmer 2s infinite;
 }
 
 @keyframes slideUp {
@@ -297,7 +213,6 @@ body::before {
 }
 
 /* Logo */
-/* Logo Styles with Glare Effect - SMOOTHER VERSION */
 .auth-logo {
     text-align: center;
     margin-bottom: 30px;
@@ -315,14 +230,14 @@ body::before {
     overflow: hidden;
 }
 
-/* Glare effect ONLY on text - SMOOTHER VERSION */
+/* Glare effect ONLY on text */
 .glare {
     position: relative;
     display: inline-block;
 }
 
 .glare::after {
-    content: 'MasterCode'; /* Duplicate text untuk efek glare */
+    content: 'MasterCode';
     position: absolute;
     top: 0;
     left: 0;
@@ -406,7 +321,7 @@ body::before {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 24px; /* Increased for error message space */
 }
 
 .form-group label {
@@ -429,6 +344,7 @@ body::before {
     color: var(--text-secondary);
     font-size: 1rem;
     transition: color 0.3s;
+    z-index: 1;
 }
 
 .input-group .toggle-password {
@@ -459,30 +375,48 @@ body::before {
     box-shadow: 0 0 0 3px rgba(0, 255, 157, 0.1);
 }
 
-.input-group input:focus + i {
+.input-group input:focus ~ i {
     color: var(--accent-primary);
 }
 
+/* Error state for input */
 .input-group input.error {
     border-color: var(--error-color);
+    background: rgba(255, 77, 77, 0.05);
 }
 
-.input-group .error-icon {
-    position: absolute;
-    right: 45px;
+.input-group input.error:focus {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.1);
+}
+
+/* Error Message Container - NEW STRUCTURE */
+.error-mes {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 8px;
+    min-height: 24px;
+}
+
+.error-mes .fa-exclamation-circle {
     color: var(--error-color);
-    display: none;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-top: 2px;
 }
 
-.input-group input.error ~ .error-icon {
-    display: block;
+.error-mes .fa-exclamation-circle.show {
+    opacity: 1;
 }
 
-/* Error Message */
 .error-message {
     color: var(--error-color);
-    font-size: 0.8rem;
-    margin-top: 5px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    flex: 1;
     display: none;
 }
 
@@ -490,9 +424,31 @@ body::before {
     display: block;
 }
 
+/* Glare untuk input saat focus */
+.input-group:focus-within::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 30%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.05);
+    transform: rotate(25deg);
+    animation: inputGlare 1.5s infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes inputGlare {
+    0% { left: -60%; }
+    20% { left: 120%; }
+    100% { left: 120%; }
+}
+
 /* Password Strength */
 .password-strength {
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .strength-bar {
@@ -509,7 +465,6 @@ body::before {
     display: block;
     height: 100%;
     width: 0;
-    background: var(--error-color);
     transition: all 0.3s;
 }
 
@@ -531,6 +486,65 @@ body::before {
 .strength-text {
     font-size: 0.8rem;
     color: var(--text-secondary);
+}
+
+/* Password Requirements */
+.password-requirements {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 10px 0;
+    display: none;
+}
+
+.password-requirements.show {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.password-requirements p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.password-requirements ul {
+    list-style: none;
+}
+
+.password-requirements li {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.password-requirements li i {
+    font-size: 0.7rem;
+}
+
+.password-requirements li.valid {
+    color: var(--success-color);
+}
+
+.password-requirements li.valid i {
+    color: var(--success-color);
+}
+
+.password-requirements li.invalid {
+    color: var(--error-color);
+}
+
+.password-requirements li.invalid i {
+    color: var(--error-color);
 }
 
 /* Form Options */
@@ -822,6 +836,37 @@ body::before {
     to { transform: rotate(360deg); }
 }
 
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8rem;
+    pointer-events: none;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .auth-container {
@@ -890,155 +935,90 @@ body::before {
     }
 }
 
-/* Tooltip */
-.tooltip {
-    position: relative;
-    display: inline-block;
+/* Scrollbar Styles */
+.scrollbar-minimal::-webkit-scrollbar {
+    width: 8px;
 }
 
-.tooltip .tooltip-text {
-    visibility: hidden;
-    width: 200px;
+.scrollbar-minimal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollbar-minimal::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 20px;
+    border: none;
+}
+
+.scrollbar-minimal::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
+}
+
+.scrollbar-glow::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-primary);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.scrollbar-glow::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 15px var(--accent-primary);
+}
+
+.scrollbar-brand::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, 
+        #6366f1 0%,
+        #8b5cf6 30%, 
+        #f97316 70%, 
+        #6366f1 100%);
+    background-size: 200% 200%;
+    animation: scrollbarGradient 5s ease infinite;
+}
+
+@keyframes scrollbarGradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.custom-scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.custom-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
     background: var(--bg-secondary);
-    color: var(--text-secondary);
-    text-align: center;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.8rem;
-    pointer-events: none;
+    border-radius: 10px;
 }
 
-.tooltip:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 10px;
+    border: 1px solid var(--bg-secondary);
 }
 
-/* Password requirements */
-.password-requirements {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 12px;
-    margin-top: 10px;
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
     display: none;
 }
 
-.password-requirements.show {
-    display: block;
-    animation: fadeIn 0.3s ease-out;
+::-webkit-scrollbar:horizontal {
+    height: 8px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.password-requirements p {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-    margin-bottom: 8px;
-}
-
-.password-requirements ul {
-    list-style: none;
-}
-
-.password-requirements li {
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.password-requirements li i {
-    font-size: 0.7rem;
-}
-
-.password-requirements li.valid {
-    color: var(--success-color);
-}
-
-.password-requirements li.valid i {
-    color: var(--success-color);
-}
-
-.password-requirements li.invalid {
-    color: var(--error-color);
-}
-
-.password-requirements li.invalid i {
-    color: var(--error-color);
-}
-
-/* Efek tambahan untuk card */
-.auth-card {
-    position: relative;
-    isolation: isolate;
-}
-
-/* Glare effect yang lebih halus */
-.auth-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        105deg,
-        transparent 40%,
-        rgba(255, 255, 255, 0.03) 45%,
-        rgba(255, 255, 255, 0.05) 50%,
-        rgba(255, 255, 255, 0.03) 55%,
-        transparent 60%
-    );
-    transform: translateX(-100%);
-    animation: shimmer 4s infinite;
-    pointer-events: none;
-    z-index: 1;
-}
-
-@keyframes shimmer {
-    0% {
-        transform: translateX(-100%);
-    }
-    20% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-/* Hover effect untuk card */
-.auth-card:hover::before {
-    animation: shimmer 2s infinite;
-}
-
-/* Glare untuk input saat focus */
-.input-group:focus-within::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 30%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.05);
-    transform: rotate(25deg);
-    animation: inputGlare 1.5s infinite;
-    pointer-events: none;
-    z-index: 0;
-}
-
-@keyframes inputGlare {
-    0% { left: -60%; }
-    20% { left: 120%; }
-    100% { left: 120%; }
+::-webkit-scrollbar-thumb:horizontal {
+    background: linear-gradient(90deg, var(--accent-primary), #8b5cf6);
 }

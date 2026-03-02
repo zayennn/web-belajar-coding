@@ -67,12 +67,31 @@ function initFormValidation() {
         input.addEventListener('blur', function() {
             validatePassword(this);
         });
+        
+        input.addEventListener('input', function() {
+            removeError(this);
+        });
     });
+    
+    // Name validation for register
+    const nameInput = document.getElementById('name');
+    if (nameInput) {
+        nameInput.addEventListener('blur', function() {
+            validateName(this);
+        });
+        
+        nameInput.addEventListener('input', function() {
+            removeError(this);
+        });
+    }
 }
 
 function validateLoginForm(e) {
     e.preventDefault();
     let isValid = true;
+    
+    // Clear all errors first
+    clearAllErrors();
     
     // Validate email
     const email = document.getElementById('email');
@@ -89,7 +108,6 @@ function validateLoginForm(e) {
     if (isValid) {
         // Show loading state
         const submitBtn = document.getElementById('submitBtn');
-        const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<span class="spinner"></span> Loading...';
         submitBtn.disabled = true;
         
@@ -101,6 +119,9 @@ function validateLoginForm(e) {
 function validateRegisterForm(e) {
     e.preventDefault();
     let isValid = true;
+    
+    // Clear all errors first
+    clearAllErrors();
     
     // Validate name
     const name = document.getElementById('name');
@@ -116,9 +137,10 @@ function validateRegisterForm(e) {
     
     // Validate password
     const password = document.getElementById('password');
-    if (!validatePasswordStrength(password.value)) {
+    const passwordStrength = validatePasswordStrength(password.value);
+    if (!passwordStrength.isValid) {
         isValid = false;
-        showError(password, 'Password terlalu lemah');
+        showError(password, passwordStrength.message);
     }
     
     // Validate confirm password
@@ -126,6 +148,8 @@ function validateRegisterForm(e) {
     if (password.value !== confirmPassword.value) {
         isValid = false;
         showError(confirmPassword, 'Password tidak cocok');
+    } else if (confirmPassword.value && !validatePassword(confirmPassword)) {
+        isValid = false;
     }
     
     // Check terms
@@ -138,7 +162,6 @@ function validateRegisterForm(e) {
     if (isValid) {
         // Show loading state
         const submitBtn = document.getElementById('submitBtn');
-        const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<span class="spinner"></span> Loading...';
         submitBtn.disabled = true;
         
@@ -147,10 +170,28 @@ function validateRegisterForm(e) {
     }
 }
 
+// Clear all errors helper
+function clearAllErrors() {
+    document.querySelectorAll('.form-group').forEach(group => {
+        const input = group.querySelector('input');
+        if (input) {
+            input.classList.remove('error');
+        }
+        
+        const errorIcon = group.querySelector('.error-mes .fa-exclamation-circle');
+        const errorMessage = group.querySelector('.error-message');
+        
+        if (errorIcon) errorIcon.classList.remove('show');
+        if (errorMessage) {
+            errorMessage.textContent = '';
+            errorMessage.classList.remove('show');
+        }
+    });
+}
+
 // Validation Helpers
 function validateName(input) {
     const value = input.value.trim();
-    const errorElement = document.getElementById('name-error');
     
     if (value.length < 3) {
         showError(input, 'Nama minimal 3 karakter');
@@ -168,7 +209,6 @@ function validateName(input) {
 
 function validateEmail(input) {
     const value = input.value.trim();
-    const errorElement = document.getElementById('email-error');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     if (!value) {
@@ -187,10 +227,14 @@ function validateEmail(input) {
 
 function validatePassword(input) {
     const value = input.value;
-    const errorElement = document.getElementById('password-error');
     
     if (!value) {
         showError(input, 'Password tidak boleh kosong');
+        return false;
+    }
+    
+    if (value.length < 6) {
+        showError(input, 'Password minimal 6 karakter');
         return false;
     }
     
@@ -207,65 +251,108 @@ function validatePasswordStrength(password) {
     };
     
     // Update requirement indicators
-    document.getElementById('req-length').className = requirements.length ? 'valid' : 'invalid';
-    document.getElementById('req-uppercase').className = requirements.uppercase ? 'valid' : 'invalid';
-    document.getElementById('req-lowercase').className = requirements.lowercase ? 'valid' : 'invalid';
-    document.getElementById('req-number').className = requirements.number ? 'valid' : 'invalid';
+    const reqLength = document.getElementById('req-length');
+    const reqUppercase = document.getElementById('req-uppercase');
+    const reqLowercase = document.getElementById('req-lowercase');
+    const reqNumber = document.getElementById('req-number');
     
-    // Update requirement icons
-    document.getElementById('req-length').innerHTML = `<i class="fas fa-${requirements.length ? 'check' : 'times'}-circle"></i> Minimal 6 karakter`;
-    document.getElementById('req-uppercase').innerHTML = `<i class="fas fa-${requirements.uppercase ? 'check' : 'times'}-circle"></i> Minimal 1 huruf besar`;
-    document.getElementById('req-lowercase').innerHTML = `<i class="fas fa-${requirements.lowercase ? 'check' : 'times'}-circle"></i> Minimal 1 huruf kecil`;
-    document.getElementById('req-number').innerHTML = `<i class="fas fa-${requirements.number ? 'check' : 'times'}-circle"></i> Minimal 1 angka`;
+    if (reqLength) {
+        reqLength.className = requirements.length ? 'valid' : 'invalid';
+        reqLength.innerHTML = `<i class="fas fa-${requirements.length ? 'check' : 'times'}-circle"></i> Minimal 6 karakter`;
+    }
+    
+    if (reqUppercase) {
+        reqUppercase.className = requirements.uppercase ? 'valid' : 'invalid';
+        reqUppercase.innerHTML = `<i class="fas fa-${requirements.uppercase ? 'check' : 'times'}-circle"></i> Minimal 1 huruf besar`;
+    }
+    
+    if (reqLowercase) {
+        reqLowercase.className = requirements.lowercase ? 'valid' : 'invalid';
+        reqLowercase.innerHTML = `<i class="fas fa-${requirements.lowercase ? 'check' : 'times'}-circle"></i> Minimal 1 huruf kecil`;
+    }
+    
+    if (reqNumber) {
+        reqNumber.className = requirements.number ? 'valid' : 'invalid';
+        reqNumber.innerHTML = `<i class="fas fa-${requirements.number ? 'check' : 'times'}-circle"></i> Minimal 1 angka`;
+    }
     
     // Calculate strength
     const strength = Object.values(requirements).filter(Boolean).length;
     const strengthBar = document.getElementById('strength-bar');
     const strengthText = document.getElementById('strength-text');
     
-    if (strength === 0 || strength === 1) {
-        strengthBar.className = 'strength-bar weak';
-        strengthText.textContent = 'Lemah';
-        return false;
-    } else if (strength === 2 || strength === 3) {
-        strengthBar.className = 'strength-bar medium';
-        strengthText.textContent = 'Sedang';
-        return false;
-    } else if (strength === 4) {
-        strengthBar.className = 'strength-bar strong';
-        strengthText.textContent = 'Kuat';
-        return true;
+    if (strengthBar && strengthText) {
+        if (strength <= 1) {
+            strengthBar.className = 'strength-bar weak';
+            strengthText.textContent = 'Lemah';
+            return { isValid: false, message: 'Password terlalu lemah' };
+        } else if (strength <= 3) {
+            strengthBar.className = 'strength-bar medium';
+            strengthText.textContent = 'Sedang';
+            return { isValid: false, message: 'Password masih sedang, tambah variasi karakter' };
+        } else {
+            strengthBar.className = 'strength-bar strong';
+            strengthText.textContent = 'Kuat';
+            return { isValid: true, message: 'Password kuat' };
+        }
     }
+    
+    return { isValid: true, message: '' };
 }
 
 function checkPasswordMatch() {
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('password_confirmation');
-    const errorElement = document.getElementById('confirm-password-error');
     
     if (confirmPassword.value && password.value !== confirmPassword.value) {
         showError(confirmPassword, 'Password tidak cocok');
         return false;
-    } else {
+    } else if (confirmPassword.value) {
         removeError(confirmPassword);
         return true;
     }
+    return true;
 }
 
-// UI Helpers
+// UI Helpers - REVISED untuk struktur error-mes baru
 function showError(input, message) {
-    const inputGroup = input.closest('.input-group');
-    const errorElement = input.closest('.form-group').querySelector('.error-message');
+    const formGroup = input.closest('.form-group');
+    const errorMes = formGroup.querySelector('.error-mes');
+    const errorIcon = errorMes.querySelector('.fa-exclamation-circle');
+    const errorMessage = errorMes.querySelector('.error-message');
     
+    // Add error class to input
     input.classList.add('error');
-    errorElement.textContent = message;
-    errorElement.classList.add('show');
+    
+    // Show error icon and message
+    if (errorIcon) errorIcon.classList.add('show');
+    if (errorMessage) {
+        errorMessage.textContent = message;
+        errorMessage.classList.add('show');
+    }
+    
+    // Add shake animation
+    input.style.animation = 'shake 0.5s ease-in-out';
+    setTimeout(() => {
+        input.style.animation = '';
+    }, 500);
 }
 
 function removeError(input) {
+    const formGroup = input.closest('.form-group');
+    const errorMes = formGroup.querySelector('.error-mes');
+    const errorIcon = errorMes.querySelector('.fa-exclamation-circle');
+    const errorMessage = errorMes.querySelector('.error-message');
+    
+    // Remove error class from input
     input.classList.remove('error');
-    const errorElement = input.closest('.form-group').querySelector('.error-message');
-    errorElement.classList.remove('show');
+    
+    // Hide error icon and message
+    if (errorIcon) errorIcon.classList.remove('show');
+    if (errorMessage) {
+        errorMessage.textContent = '';
+        errorMessage.classList.remove('show');
+    }
 }
 
 // Password Toggle
@@ -295,7 +382,9 @@ function initPasswordStrength() {
     
     if (passwordInput && requirements) {
         passwordInput.addEventListener('focus', function() {
-            requirements.classList.add('show');
+            if (this.value) {
+                requirements.classList.add('show');
+            }
         });
         
         passwordInput.addEventListener('blur', function() {
@@ -303,11 +392,20 @@ function initPasswordStrength() {
                 requirements.classList.remove('show');
             }
         });
+        
+        // Show requirements if there's value on page load
+        if (passwordInput.value) {
+            requirements.classList.add('show');
+        }
     }
 }
 
 function initPasswordRequirements() {
-    // Handled in validatePasswordStrength
+    // Initialize password requirements if there's existing value
+    const passwordInput = document.getElementById('password');
+    if (passwordInput && passwordInput.value) {
+        validatePasswordStrength(passwordInput.value);
+    }
 }
 
 // Alert Auto Close
@@ -315,9 +413,11 @@ function initAlertAutoClose() {
     const alerts = document.querySelectorAll('.alert');
     alerts.forEach(alert => {
         setTimeout(() => {
-            alert.style.animation = 'slideOut 0.3s ease-out';
+            alert.style.animation = 'slideOut 0.3s ease-out forwards';
             setTimeout(() => {
-                alert.remove();
+                if (alert.parentNode) {
+                    alert.remove();
+                }
             }, 300);
         }, 5000);
     });
@@ -339,13 +439,21 @@ function initInputEffects() {
         // Auto capitalize name
         if (input.id === 'name') {
             input.addEventListener('input', function() {
-                this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+                // Only capitalize first letter of each word
+                this.value = this.value.replace(/\b\w/g, l => l.toUpperCase());
             });
         }
+        
+        // Remove error on input
+        input.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                removeError(this);
+            }
+        });
     });
 }
 
-// Add slideOut animation
+// Add animations
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideOut {
@@ -359,8 +467,34 @@ style.textContent = `
         }
     }
     
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+    
     .input-group.focused i {
         color: var(--accent-primary);
+    }
+    
+    .error-mes .fa-exclamation-circle {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .error-mes .fa-exclamation-circle.show {
+        opacity: 1;
+    }
+    
+    .error-message {
+        opacity: 0;
+        transform: translateY(-5px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .error-message.show {
+        opacity: 1;
+        transform: translateY(0);
     }
 `;
 document.head.appendChild(style);

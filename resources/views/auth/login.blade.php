@@ -51,15 +51,18 @@
                 @csrf
 
                 <!-- Email Field -->
+                <!-- Email Field -->
                 <div class="form-group">
                     <label for="email">Email</label>
                     <div class="input-group">
                         <i class="fas fa-envelope"></i>
                         <input type="email" id="email" name="email" placeholder="Masukkan email kamu"
                             value="{{ old('email') }}" required autofocus>
-                        <i class="fas fa-exclamation-circle error-icon"></i>
                     </div>
-                    <div class="error-message" id="email-error"></div>
+                    <div class="error-mes">
+                        <i class="fas fa-exclamation-circle error-icon"></i>
+                        <div class="error-message" id="email-error"></div>
+                    </div>
                 </div>
 
                 <!-- Password Field -->
@@ -70,11 +73,13 @@
                         <input type="password" id="password" name="password" placeholder="Masukkan password kamu"
                             required>
                         <i class="fas fa-eye toggle-password" onclick="togglePassword('password')"></i>
-                        <i class="fas fa-exclamation-circle error-icon"></i>
                     </div>
-                    <div class="error-message" id="password-error"></div>
+                    <div class="error-mes">
+                        <i class="fas fa-exclamation-circle error-icon"></i>
+                        <div class="error-message" id="password-error"></div>
+                    </div>
                 </div>
-
+                
                 <!-- Form Options -->
                 <div class="form-options">
                     <label class="remember-me">

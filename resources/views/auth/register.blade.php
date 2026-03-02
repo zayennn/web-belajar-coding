@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Back to Home -->
     <a href="{{ url('/') }}" class="back-home">
@@ -28,41 +30,37 @@
             </div>
 
             <!-- Alert Messages -->
-            @if(session('error'))
-            <div class="alert alert-error" id="alert-message">
-                <i class="fas fa-exclamation-circle"></i>
-                <span>{{ session('error') }}</span>
-                <i class="fas fa-times close-btn" onclick="this.parentElement.remove()"></i>
-            </div>
+            @if (session('error'))
+                <div class="alert alert-error" id="alert-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>{{ session('error') }}</span>
+                    <i class="fas fa-times close-btn" onclick="this.parentElement.remove()"></i>
+                </div>
             @endif
 
-            @if($errors->any())
-            <div class="alert alert-error" id="alert-message">
-                <i class="fas fa-exclamation-circle"></i>
-                <span>{{ $errors->first() }}</span>
-                <i class="fas fa-times close-btn" onclick="this.parentElement.remove()"></i>
-            </div>
+            @if ($errors->any())
+                <div class="alert alert-error" id="alert-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>{{ $errors->first() }}</span>
+                    <i class="fas fa-times close-btn" onclick="this.parentElement.remove()"></i>
+                </div>
             @endif
 
             <!-- Register Form -->
             <form class="auth-form" id="registerForm" method="POST" action="{{ route('register') }}">
                 @csrf
-                
-                <!-- Name Field -->
+
                 <div class="form-group">
                     <label for="name">Nama Lengkap</label>
                     <div class="input-group">
                         <i class="fas fa-user"></i>
-                        <input type="text" 
-                               id="name" 
-                               name="name" 
-                               placeholder="Masukkan nama lengkap kamu" 
-                               value="{{ old('name') }}"
-                               required 
-                               autofocus>
-                        <i class="fas fa-exclamation-circle error-icon"></i>
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap kamu"
+                            value="{{ old('name') }}" required autofocus>
                     </div>
-                    <div class="error-message" id="name-error"></div>
+                    <div class="error-mes">
+                        <i class="fas fa-exclamation-circle error-icon"></i>
+                        <div class="error-message" id="name-error"></div>
+                    </div>
                 </div>
 
                 <!-- Email Field -->
@@ -70,15 +68,13 @@
                     <label for="email">Email</label>
                     <div class="input-group">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" 
-                               id="email" 
-                               name="email" 
-                               placeholder="Masukkan email kamu" 
-                               value="{{ old('email') }}"
-                               required>
-                        <i class="fas fa-exclamation-circle error-icon"></i>
+                        <input type="email" id="email" name="email" placeholder="Masukkan email kamu"
+                            value="{{ old('email') }}" required>
                     </div>
-                    <div class="error-message" id="email-error"></div>
+                    <div class="error-mes">
+                        <i class="fas fa-exclamation-circle error-icon"></i>
+                        <div class="error-message" id="email-error"></div>
+                    </div>
                 </div>
 
                 <!-- Password Field -->
@@ -86,15 +82,11 @@
                     <label for="password">Password</label>
                     <div class="input-group">
                         <i class="fas fa-lock"></i>
-                        <input type="password" 
-                               id="password" 
-                               name="password" 
-                               placeholder="Buat password (min. 6 karakter)" 
-                               required>
+                        <input type="password" id="password" name="password"
+                            placeholder="Buat password (min. 6 karakter)" required>
                         <i class="fas fa-eye toggle-password" onclick="togglePassword('password')"></i>
-                        <i class="fas fa-exclamation-circle error-icon"></i>
                     </div>
-                    
+
                     <!-- Password Strength -->
                     <div class="password-strength">
                         <div class="strength-bar" id="strength-bar"></div>
@@ -119,6 +111,11 @@
                             </li>
                         </ul>
                     </div>
+
+                    <div class="error-mes">
+                        <i class="fas fa-exclamation-circle error-icon"></i>
+                        <div class="error-message" id="password-error"></div>
+                    </div>
                 </div>
 
                 <!-- Confirm Password Field -->
@@ -126,22 +123,21 @@
                     <label for="password_confirmation">Konfirmasi Password</label>
                     <div class="input-group">
                         <i class="fas fa-lock"></i>
-                        <input type="password" 
-                               id="password_confirmation" 
-                               name="password_confirmation" 
-                               placeholder="Masukkan ulang password kamu" 
-                               required>
+                        <input type="password" id="password_confirmation" name="password_confirmation"
+                            placeholder="Masukkan ulang password kamu" required>
                         <i class="fas fa-eye toggle-password" onclick="togglePassword('password_confirmation')"></i>
-                        <i class="fas fa-exclamation-circle error-icon"></i>
                     </div>
-                    <div class="error-message" id="confirm-password-error"></div>
+                    <div class="error-mes">
+                        <i class="fas fa-exclamation-circle error-icon"></i>
+                        <div class="error-message" id="confirm-password-error"></div>
+                    </div>
                 </div>
 
                 <!-- Terms and Conditions -->
                 <div class="terms">
                     <input type="checkbox" id="terms" name="terms" required>
                     <label for="terms">
-                        Saya setuju dengan <a href="#">Syarat & Ketentuan</a> dan 
+                        Saya setuju dengan <a href="#">Syarat & Ketentuan</a> dan
                         <a href="#">Kebijakan Privasi</a> yang berlaku
                     </label>
                 </div>
@@ -175,4 +171,5 @@
 
     <script src="{{ asset('js/auth.js') }}"></script>
 </body>
+
 </html>
