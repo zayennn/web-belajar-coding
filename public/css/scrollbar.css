@@ -106,7 +106,6 @@ body {
     background: var(--accent-hover);
 }
 
-/* Opsi 3: Scrollbar dengan efek glow */
 .scrollbar-glow::-webkit-scrollbar-thumb {
     background: var(--accent-primary);
     box-shadow: 0 0 10px var(--accent-primary);
