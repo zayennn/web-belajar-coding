@@ -1,4 +1,3 @@
-// Data Bahasa (Mock Database)
 const languagesData = [
     {
         id: 1,
@@ -17,7 +16,7 @@ const languagesData = [
         isActive: true,
         isPopular: true,
         isNew: false,
-        progress: 40, // untuk user yang sudah login
+        progress: 40,
         color: '#f093fb'
     },
     {
@@ -94,7 +93,7 @@ const languagesData = [
             exercises: 9,
             projects: 3
         },
-        isActive: false, // Coming soon
+        isActive: false,
         isPopular: false,
         isNew: true,
         progress: 0,
