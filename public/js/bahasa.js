@@ -1,3 +1,4 @@
+// Data Bahasa (Mock Database)
 const languagesData = [
     {
         id: 1,
@@ -16,7 +17,7 @@ const languagesData = [
         isActive: true,
         isPopular: true,
         isNew: false,
-        progress: 40,
+        progress: 40, // untuk user yang sudah login
         color: '#f093fb'
     },
     {
@@ -93,7 +94,7 @@ const languagesData = [
             exercises: 9,
             projects: 3
         },
-        isActive: false,
+        isActive: false, // Coming soon
         isPopular: false,
         isNew: true,
         progress: 0,
@@ -181,6 +182,7 @@ const languagesData = [
     }
 ];
 
+// State management
 let currentUser = {
     isLoggedIn: false,
     name: 'Guest'
@@ -199,11 +201,51 @@ const loginToggle = document.getElementById('login-status-toggle');
 const loginStatusText = document.getElementById('login-status-text');
 const navAuth = document.getElementById('nav-auth');
 
+// Initialize page
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavbar();
     loadLanguages();
     setupEventListeners();
 });
+
+// Navbar initialization
+function initializeNavbar() {
+    updateNavbarAuth();
+    
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (navToggle) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+}
+
+function updateNavbarAuth() {
+    if (!navAuth) return;
+    
+    if (currentUser.isLoggedIn) {
+        navAuth.innerHTML = `
+            <a href="/profile" class="btn-profile">
+                <i class="fas fa-user"></i> ${currentUser.name}
+            </a>
+        `;
+    } else {
+        navAuth.innerHTML = `
+            <a href="#" class="btn-login">Login</a>
+            <a href="#" class="btn-register">Register</a>
+        `;
+    }
+}
 
 function loadLanguages() {
     loadingState.style.display = 'block';
@@ -345,7 +387,7 @@ function setupEventListeners() {
             loginStatusText.textContent = currentUser.isLoggedIn ? 'Logged In' : 'Belum Login';
             
             updateNavbarAuth();
-            loadLanguages()
+            loadLanguages(); // Reload cards dengan progress bar
         });
     }
     
