@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Demo Code Editor Simulation
     const runButton = document.getElementById('demo-run-btn');
     const outputDiv = document.getElementById('demo-output');
     const editorContent = document.getElementById('demo-editor-content');
