@@ -330,7 +330,6 @@ function setupEventListeners() {
         });
     }
     
-    // Sort by
     if (sortBy) {
         sortBy.addEventListener('change', function(e) {
             currentSort = e.target.value;
