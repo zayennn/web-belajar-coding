@@ -200,7 +200,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Add loading animation
 window.addEventListener('load', function () {
     document.body.classList.add('loaded');
 
