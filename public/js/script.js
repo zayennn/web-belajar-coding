@@ -202,7 +202,6 @@ document.addEventListener('DOMContentLoaded', function () {
             logo.offsetHeight; // Trigger reflow
             logo.style.animation = null;
 
-            // Alternative: just ensure the pseudo-element animation is running
             const style = document.createElement('style');
             style.innerHTML = `
             .glare::before {
