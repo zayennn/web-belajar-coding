@@ -75,7 +75,6 @@
     scrollbar-color: var(--accent-primary) var(--bg-secondary);
 }
 
-/* Dark theme specific scrollbar adjustments */
 .dark-theme ::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, #818cf8, #a78bfa);
     border: 2px solid var(--bg-secondary);
