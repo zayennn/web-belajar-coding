@@ -563,38 +563,8 @@ section {
 }
 
 @media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background: var(--bg-secondary);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        padding: 2rem;
-        border-bottom: 1px solid var(--border-color);
-    }
-    
-    .nav-menu.active {
-        left: 0;
-    }
-    
-    .nav-links {
-        flex-direction: column;
-    }
-    
-    .nav-auth {
-        flex-direction: column;
-    }
-    
-    .nav-toggle {
-        display: block;
-    }
-    
     .hero-container,
-    .editor-container,
-    .footer-grid {
+    .editor-container {
         grid-template-columns: 1fr;
     }
     
@@ -616,8 +586,7 @@ section {
     
     .card-grid,
     .language-grid,
-    .audience-grid,
-    .testimonial-grid {
+    .audience-grid {
         grid-template-columns: 1fr;
     }
 }
