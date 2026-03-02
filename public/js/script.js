@@ -195,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Glare effect enhancement - FIXED VERSION
     const logo = document.querySelector('.logo-gradient.glare');
     if (logo) {
-        // Reset animation periodically to ensure it keeps running smoothly
         setInterval(() => {
             logo.style.animation = 'none';
             logo.offsetHeight;
