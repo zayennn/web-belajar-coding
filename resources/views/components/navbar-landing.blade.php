@@ -14,7 +14,7 @@
                 <a href="#" class="btn-login">Login</a>
                 <a href="#" class="btn-register">Register</a>
             </div>
-            <div class="line__tracking"></div>
+            {{-- <div class="line__tracking"></div> --}}
         </nav>
 
         <div class="nav-auth-desktop">
