@@ -84,7 +84,7 @@ body::before {
 /* Container */
 .auth-container {
     width: 100%;
-    max-width: 450px;
+    max-width: 650px;
     padding: 80px 20px 20px 20px;
     position: relative;
     z-index: 1;
@@ -495,7 +495,7 @@ body::before {
     border-radius: 8px;
     padding: 12px;
     margin: 10px 0;
-    display: none;
+    display: block;
 }
 
 .password-requirements.show {
@@ -869,10 +869,6 @@ body::before {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .auth-container {
-        padding: 15px;
-    }
-    
     .auth-card {
         padding: 30px 20px;
     }
