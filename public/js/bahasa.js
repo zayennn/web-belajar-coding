@@ -337,7 +337,6 @@ function setupEventListeners() {
         });
     }
     
-    // Login status toggle (untuk demo)
     if (loginToggle) {
         loginToggle.addEventListener('change', function(e) {
             currentUser.isLoggedIn = e.target.checked;
