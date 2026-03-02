@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Simulate code execution
             const code = editorContent.innerText;
 
-            // Simple simulation for demo
             if (code.includes('println') || code.includes('print')) {
                 outputDiv.innerHTML = `
                     <div class="output-header">
