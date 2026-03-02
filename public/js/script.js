@@ -131,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Parallax effect for hero section
     const hero = document.querySelector('.hero');
     if (hero) {
         window.addEventListener('scroll', function () {
