@@ -205,7 +205,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
 });
 
-
 // Load and display languages
 function loadLanguages() {
     // Show loading
