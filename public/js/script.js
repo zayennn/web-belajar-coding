@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setInterval(() => {
             // Remove and re-add the glare effect to restart animation
             logo.style.animation = 'none';
-            logo.offsetHeight; // Trigger reflow
+            logo.offsetHeight;
             logo.style.animation = null;
 
             const style = document.createElement('style');
