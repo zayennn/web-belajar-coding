@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
             }
 
-            // Button feedback
             const originalText = runButton.innerHTML;
             runButton.innerHTML = '<i class="fas fa-check"></i> Run';
             setTimeout(() => {
