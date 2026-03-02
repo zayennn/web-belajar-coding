@@ -70,7 +70,6 @@
     background: var(--bg-secondary);
 }
 
-/* Untuk Firefox */
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--accent-primary) var(--bg-secondary);
