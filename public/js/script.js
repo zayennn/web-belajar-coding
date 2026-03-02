@@ -218,7 +218,6 @@ function validatePassword(password) {
     return password.length >= 6;
 }
 
-// Error handling for images
 document.querySelectorAll('img').forEach(img => {
     img.addEventListener('error', function () {
         this.style.display = 'none';
