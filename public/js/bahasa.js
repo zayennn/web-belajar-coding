@@ -205,27 +205,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
 });
 
-function initializeNavbar() {
-    updateNavbarAuth();
-    
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            const icon = this.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    }
-}
-
 // Update navbar based on login status
 function updateNavbarAuth() {
     if (!navAuth) return;
