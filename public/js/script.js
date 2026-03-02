@@ -211,7 +211,6 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
             document.head.appendChild(style);
 
-            // Clean up after animation cycle
             setTimeout(() => {
                 style.remove();
             }, 100);
