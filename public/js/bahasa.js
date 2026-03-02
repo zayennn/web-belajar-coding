@@ -205,14 +205,11 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
 });
 
-// Load and display languages
 function loadLanguages() {
-    // Show loading
     loadingState.style.display = 'block';
     languageGrid.style.display = 'none';
     emptyState.style.display = 'none';
     
-    // Simulate network delay
     setTimeout(() => {
         let filteredLanguages = filterLanguages(languagesData, currentFilter);
         filteredLanguages = sortLanguages(filteredLanguages, currentSort);
