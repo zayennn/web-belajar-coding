@@ -88,7 +88,6 @@ body {
     -ms-overflow-style: none; /* Hide default scrollbar */
 }
 
-/* Opsi 2: Scrollbar dengan desain lebih minimalis */
 .scrollbar-minimal::-webkit-scrollbar {
     width: 8px;
 }
