@@ -199,14 +199,12 @@ const loginToggle = document.getElementById('login-status-toggle');
 const loginStatusText = document.getElementById('login-status-text');
 const navAuth = document.getElementById('nav-auth');
 
-// Initialize page
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavbar();
     loadLanguages();
     setupEventListeners();
 });
 
-// Navbar initialization
 function initializeNavbar() {
     updateNavbarAuth();
     
