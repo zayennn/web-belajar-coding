@@ -203,7 +203,6 @@ document.addEventListener('DOMContentLoaded', function () {
 window.addEventListener('load', function () {
     document.body.classList.add('loaded');
 
-    // Simulate typing effect for hero subtitle (optional)
     const subtitle = document.querySelector('.hero-subtitle');
     if (subtitle) {
         const originalText = subtitle.textContent;
