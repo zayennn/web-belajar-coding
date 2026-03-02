@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
         navToggle.addEventListener('click', function () {
             navMenu.classList.toggle('active');
 
-            // Toggle icon
             const icon = this.querySelector('i');
             if (icon.classList.contains('fa-bars')) {
                 icon.classList.remove('fa-bars');
