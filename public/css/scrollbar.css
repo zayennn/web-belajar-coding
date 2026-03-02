@@ -164,7 +164,7 @@ body {
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari, Opera */
+    display: none;
 }
 
 /* Scrollbar untuk horizontal scroll */
