@@ -7,7 +7,6 @@
             <p class="page-subtitle">Pilih bahasa yang ingin Anda pelajari dan mulai dari level dasar hingga mahir. Semua
                 materi terstruktur dengan project nyata.</p>
 
-            <!-- Filter & Sorting (UX Improvement) -->
             <div class="filter-section">
                 <div class="filter-group">
                     <label for="filter-level"><i class="fas fa-filter"></i> Level:</label>
@@ -29,7 +28,6 @@
                     </select>
                 </div>
 
-                <!-- Status Login Toggle (untuk demo) -->
                 <div class="login-toggle">
                     <label class="switch">
                         <input type="checkbox" id="login-status-toggle">
@@ -41,20 +39,17 @@
         </div>
     </section>
 
-    <!-- 2️⃣ Grid Card Bahasa -->
     <section class="language-grid-section">
         <div class="container">
             <div class="language-grid" id="language-grid">
                 <!-- Cards akan di-generate oleh JavaScript -->
             </div>
 
-            <!-- Loading State -->
             <div class="loading-state" id="loading-state">
                 <div class="spinner"></div>
                 <p>Memuat bahasa...</p>
             </div>
 
-            <!-- Empty State -->
             <div class="empty-state" id="empty-state" style="display: none;">
                 <i class="fas fa-search"></i>
                 <h3>Tidak Ada Bahasa Ditemukan</h3>
