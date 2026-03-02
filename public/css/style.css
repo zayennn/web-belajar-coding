@@ -39,6 +39,7 @@ body {
 }
 
 /* Gradient & Glare Effects */
+/* Gradient & Glare Effects */
 .logo-gradient {
     font-size: 1.8rem;
     font-weight: 800;
@@ -50,34 +51,124 @@ body {
     display: inline-block;
 }
 
+/* Glare effect ONLY on text - FIXED VERSION */
 .glare {
     position: relative;
+    display: inline-block;
     overflow: hidden;
 }
 
-.glare::after {
+.glare::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -60%;
+    top: 0;
+    left: -150%;
     width: 50%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: rotate(25deg);
-    animation: glare 4s infinite;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: glare-move 4s infinite;
+    pointer-events: none;
+    z-index: 10;
+    mix-blend-mode: overlay;
 }
 
-@keyframes glare {
-    0% { left: -60%; }
-    20% { left: 120%; }
-    100% { left: 120%; }
+@keyframes glare-move {
+    0% {
+        left: -150%;
+    }
+    20% {
+        left: 150%;
+    }
+    100% {
+        left: 150%;
+    }
 }
 
-.gradient-text {
-    background: var(--gradient-2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+/* Alternative smoother glare effect */
+.glare-smooth {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.glare-smooth::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: skewX(-20deg);
+    animation: glare-smooth-move 3.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 10;
+    mix-blend-mode: soft-light;
+}
+
+@keyframes glare-smooth-move {
+    0% {
+        left: -100%;
+    }
+    30% {
+        left: 150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+/* Subtle shine effect (another option) */
+.glare-subtle {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.glare-subtle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: skewX(-15deg);
+    animation: glare-subtle-move 5s infinite;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes glare-subtle-move {
+    0% {
+        left: -100%;
+    }
+    25% {
+        left: 150%;
+    }
+    100% {
+        left: 150%;
+    }
 }
 
 /* Navbar */
