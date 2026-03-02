@@ -138,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const scrolled = window.pageYOffset;
             const rate = scrolled * 0.5;
 
-            // Subtle parallax for hero background
             hero.style.backgroundPosition = `center ${rate}px`;
         });
     }
