@@ -191,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Glare effect enhancement
     const logo = document.querySelector('.logo-gradient.glare');
     if (logo) {
         setInterval(() => {
