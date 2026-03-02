@@ -230,7 +230,6 @@ function filterLanguages(languages, level) {
     return languages.filter(lang => lang.level === level);
 }
 
-// Sort languages
 function sortLanguages(languages, sortBy) {
     const sorted = [...languages];
     
