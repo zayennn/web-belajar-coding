@@ -175,7 +175,6 @@ body {
     background: linear-gradient(90deg, var(--accent-primary), #8b5cf6);
 }
 
-/* Responsive scrollbar */
 @media (max-width: 768px) {
     ::-webkit-scrollbar {
         width: 6px;
