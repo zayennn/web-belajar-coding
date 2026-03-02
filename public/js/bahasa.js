@@ -322,9 +322,7 @@ function createLanguageCard(language) {
     return card;
 }
 
-// Setup event listeners
 function setupEventListeners() {
-    // Filter by level
     if (filterLevel) {
         filterLevel.addEventListener('change', function(e) {
             currentFilter = e.target.value;
