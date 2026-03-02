@@ -85,7 +85,7 @@
 }
 
 body {
-    -ms-overflow-style: none; /* Hide default scrollbar */
+    -ms-overflow-style: none;
 }
 
 .scrollbar-minimal::-webkit-scrollbar {
