@@ -18,8 +18,8 @@
         </nav>
 
         <div class="nav-auth-desktop">
-            <a href="#" class="btn-login">Login</a>
-            <a href="#" class="btn-register">Register</a>
+            <a href="{{ route('login') }}" class="btn-login">Login</a>
+            <a href="{{ route('register') }}" class="btn-register">Register</a>
         </div>
 
         <label class="hamburger" id="hamburger">
