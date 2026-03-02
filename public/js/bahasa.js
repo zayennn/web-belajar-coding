@@ -113,7 +113,7 @@ const languagesData = [
             exercises: 10,
             projects: 4
         },
-        isActive: false, // Coming soon
+        isActive: false,
         isPopular: false,
         isNew: false,
         progress: 0,
