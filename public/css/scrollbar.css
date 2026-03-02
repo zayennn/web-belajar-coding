@@ -84,7 +84,6 @@
     background: linear-gradient(135deg, #a78bfa, #c084fc);
 }
 
-/* Untuk Internet Explorer dan Edge Legacy */
 body {
     -ms-overflow-style: none; /* Hide default scrollbar */
 }
