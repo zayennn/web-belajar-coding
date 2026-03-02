@@ -14,6 +14,60 @@
     --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
+/* ========== CUSTOM SCROLLBAR ========== */
+/* Untuk Chrome, Edge, dan Safari */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-left: 1px solid var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00ff9d 0%, #00b8ff 100%);
+    border-radius: 6px;
+    border: 2px solid var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #00b8ff 0%, #00ff9d 100%);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--bg-secondary);
+}
+
+/* Untuk Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #00ff9d var(--bg-secondary);
+}
+
+/* Scrollbar untuk elemen tertentu */
+.code-body::-webkit-scrollbar,
+.editor-content::-webkit-scrollbar,
+.output-content::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.code-body::-webkit-scrollbar-track,
+.editor-content::-webkit-scrollbar-track,
+.output-content::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+.code-body::-webkit-scrollbar-thumb,
+.editor-content::-webkit-scrollbar-thumb,
+.output-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00ff9d 0%, #00b8ff 100%);
+    border-radius: 4px;
+    border: 1px solid #1e1e1e;
+}
+
 * {
     margin: 0;
     padding: 0;
