@@ -279,7 +279,6 @@ function createLanguageCard(language) {
         </div>
     ` : '';
     
-    // Button (disabled if coming soon)
     const button = language.isActive ? 
         `<a href="/roadmap/${language.slug}" class="btn-start">Lihat Roadmap</a>` :
         `<button class="btn-start" disabled style="opacity: 0.5; cursor: not-allowed;">Segera Hadir</button>`;
