@@ -349,7 +349,6 @@ function setupEventListeners() {
         });
     }
     
-    // Close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
         const navMenu = document.getElementById('nav-menu');
         const navToggle = document.getElementById('nav-toggle');
@@ -366,7 +365,6 @@ function setupEventListeners() {
         }
     });
     
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
