@@ -166,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(section);
     });
 
-    // Counter animation for stats (if any)
     function animateValue(element, start, end, duration) {
         let startTimestamp = null;
         const step = (timestamp) => {
