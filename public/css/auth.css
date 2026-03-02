@@ -297,6 +297,7 @@ body::before {
 }
 
 /* Logo */
+/* Logo Styles with Glare Effect - SMOOTHER VERSION */
 .auth-logo {
     text-align: center;
     margin-bottom: 30px;
@@ -305,35 +306,75 @@ body::before {
 .logo-gradient {
     font-size: 2rem;
     font-weight: 800;
-    background: var(--gradient-2);
+    background: linear-gradient(135deg, #00ff9d 0%, #00b8ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
     display: inline-block;
-}
-
-.glare {
-    position: relative;
     overflow: hidden;
 }
 
-.glare::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 50%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: rotate(25deg);
-    animation: glare 4s infinite;
+/* Glare effect ONLY on text - SMOOTHER VERSION */
+.glare {
+    position: relative;
+    display: inline-block;
 }
 
-@keyframes glare {
-    0% { left: -60%; }
-    20% { left: 120%; }
-    100% { left: 120%; }
+.glare::after {
+    content: 'MasterCode'; /* Duplicate text untuk efek glare */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.8),
+        transparent
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 100%;
+    animation: glare-shine 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+    white-space: nowrap;
+    opacity: 0.9;
+}
+
+@keyframes glare-shine {
+    0% {
+        background-position: -150% 0;
+    }
+    20% {
+        background-position: 50% 0;
+    }
+    40% {
+        background-position: 150% 0;
+    }
+    100% {
+        background-position: 150% 0;
+    }
+}
+
+/* Hover effect untuk mempercepat glare */
+.glare:hover::after {
+    animation: glare-shine-fast 2s ease-in-out infinite;
+}
+
+@keyframes glare-shine-fast {
+    0% {
+        background-position: -150% 0;
+    }
+    30% {
+        background-position: 150% 0;
+    }
+    100% {
+        background-position: 150% 0;
+    }
 }
 
 /* Header */
