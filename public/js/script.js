@@ -107,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 `;
 
-                // Add animation effect
                 outputDiv.style.animation = 'none';
                 outputDiv.offsetHeight;
                 outputDiv.style.animation = 'fadeInUp 0.5s ease-out';
