@@ -167,7 +167,6 @@ body {
     display: none;
 }
 
-/* Scrollbar untuk horizontal scroll */
 ::-webkit-scrollbar:horizontal {
     height: 8px;
 }
