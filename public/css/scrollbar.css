@@ -138,7 +138,6 @@ body {
     }
 }
 
-/* Untuk elemen yang memiliki overflow scroll sendiri */
 .custom-scroll {
     overflow-y: auto;
     overflow-x: hidden;
