@@ -197,7 +197,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (logo) {
         // Reset animation periodically to ensure it keeps running smoothly
         setInterval(() => {
-            // Remove and re-add the glare effect to restart animation
             logo.style.animation = 'none';
             logo.offsetHeight;
             logo.style.animation = null;
