@@ -233,24 +233,6 @@
     color: var(--text-primary);
 }
 
-/* Mobile Responsive */
-@media (max-width: 1024px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .card-grid,
-    .language-grid,
-    .audience-grid,
-    .testimonial-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .roadmap-container {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -279,34 +261,5 @@
     
     .nav-toggle {
         display: block;
-    }
-    
-    .hero-container,
-    .editor-container,
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero {
-        text-align: center;
-    }
-    
-    .hero-cta {
-        justify-content: center;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .cta-title {
-        font-size: 2rem;
-    }
-    
-    .card-grid,
-    .language-grid,
-    .audience-grid,
-    .testimonial-grid {
-        grid-template-columns: 1fr;
     }
 }
