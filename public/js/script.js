@@ -209,7 +209,6 @@ window.addEventListener('load', function () {
     }
 });
 
-// Form validation for login/register (if added later)
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
