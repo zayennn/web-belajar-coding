@@ -19,5 +19,6 @@
     @include('components.footer-landing')
 
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/navbar.js') }}"></script>
 </body>
 </html>
