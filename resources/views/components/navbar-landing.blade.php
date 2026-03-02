@@ -6,13 +6,13 @@
         </a>
 
         <nav class="nav__menu" id="navMenu">
-            <a href="#home" class="nav__link active" data-route="#home">Home</a>
-            <a href="#bahasa" class="nav__link" data-route="#bahasa">Bahasa Pemrogramman</a>
-            <a href="#tentang" class="nav__link" data-route="#tentang">Tentang</a>
-            <a href="#roadmap" class="nav__link" data-route="#roadmap">Roadmap</a>
+            <a href="/" class="nav__link active">Home</a>
+            <a href="{{ route('bahasa-pemrogramman') }}" class="nav__link">Bahasa Pemrogramman</a>
+            <a href="#tentang" class="nav__link">Tentang</a>
+            <a href="#roadmap" class="nav__link">Roadmap</a>
             <div class="nav-auth-mobile">
-                <a href="#" class="btn-login">Login</a>
-                <a href="#" class="btn-register">Register</a>
+                <a href="{{ route('login') }}" class="btn-login">Login</a>
+                <a href="{{ route('register') }}" class="btn-register">Register</a>
             </div>
             {{-- <div class="line__tracking"></div> --}}
         </nav>

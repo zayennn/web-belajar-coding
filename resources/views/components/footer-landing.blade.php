@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 MasterCode. All rights reserved.</p>
+            <p>&copy; 2026 MasterCode. All rights reserved.</p>
             <p class="footer-note">Made with <i class="fas fa-heart" style="color: #ff4d4d;"></i> for developers</p>
         </div>
     </div>

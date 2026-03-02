@@ -6,7 +6,7 @@
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    grid-template-columns: 2fr 1fr 1.5fr 1fr;
     gap: 3rem;
     margin-bottom: 3rem;
 }
@@ -71,6 +71,12 @@
 
 .footer-note {
     margin-top: 0.5rem;
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 }
 
 @media (max-width: 1024px) {
