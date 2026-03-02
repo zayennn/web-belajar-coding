@@ -345,7 +345,7 @@ function setupEventListeners() {
             loginStatusText.textContent = currentUser.isLoggedIn ? 'Logged In' : 'Belum Login';
             
             updateNavbarAuth();
-            loadLanguages(); // Reload cards dengan progress bar
+            loadLanguages()
         });
     }
     
