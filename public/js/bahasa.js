@@ -225,7 +225,6 @@ function loadLanguages() {
     }, 500);
 }
 
-// Filter languages by level
 function filterLanguages(languages, level) {
     if (level === 'all') return languages;
     return languages.filter(lang => lang.level === level);
