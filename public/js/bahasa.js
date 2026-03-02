@@ -205,23 +205,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
 });
 
-// Update navbar based on login status
-function updateNavbarAuth() {
-    if (!navAuth) return;
-    
-    if (currentUser.isLoggedIn) {
-        navAuth.innerHTML = `
-            <a href="/profile" class="btn-profile">
-                <i class="fas fa-user"></i> ${currentUser.name}
-            </a>
-        `;
-    } else {
-        navAuth.innerHTML = `
-            <a href="#" class="btn-login">Login</a>
-            <a href="#" class="btn-register">Register</a>
-        `;
-    }
-}
 
 // Load and display languages
 function loadLanguages() {
