@@ -397,7 +397,6 @@ document.querySelectorAll('.language-card').forEach(card => {
     observer.observe(card);
 });
 
-// Export functions for global use (if needed)
 window.bahasaPage = {
     filterLanguages,
     sortLanguages,
