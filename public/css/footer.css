@@ -4,80 +4,71 @@
     border-top: 1px solid var(--border-color);
 }
 
-.footer-content {
+.footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 2fr;
-    gap: 60px;
-    margin-bottom: 40px;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
 }
 
-.footer-brand p {
+.footer-logo p {
     color: var(--text-secondary);
-    margin: 20px 0;
-    font-size: 14px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
 }
 
-.social-links {
-    display: flex;
-    gap: 16px;
-}
-
-.social-links a {
-    color: var(--text-secondary);
-    font-size: 20px;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: var(--accent-primary);
-}
-
-.footer-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-.footer-column h4 {
-    margin-bottom: 20px;
+.footer-links h4 {
+    margin-bottom: 1.5rem;
     color: var(--text-primary);
 }
 
-.footer-column ul {
+.footer-links ul {
     list-style: none;
 }
 
-.footer-column ul li {
-    margin-bottom: 12px;
+.footer-links li {
+    margin-bottom: 0.8rem;
 }
 
-.footer-column ul li a {
+.footer-links a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
-.footer-column ul li a:hover {
+.footer-links a:hover {
     color: var(--accent-primary);
+}
+
+.footer-links i {
+    margin-right: 0.5rem;
+    color: var(--accent-primary);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--accent-primary);
+    transform: translateY(-3px);
 }
 
 .footer-bottom {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 2rem;
     border-top: 1px solid var(--border-color);
-    color: var(--text-light);
-    font-size: 13px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
-    .footer-links {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .footer-links {
-        grid-template-columns: 1fr;
-    }
+.footer-note {
+    margin-top: 0.5rem;
 }
