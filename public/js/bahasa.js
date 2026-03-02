@@ -390,7 +390,6 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
-// Observe language cards
 document.querySelectorAll('.language-card').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
