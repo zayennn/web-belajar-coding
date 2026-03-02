@@ -251,7 +251,6 @@ function sortLanguages(languages, sortBy) {
     }
 }
 
-// Display languages in grid
 function displayLanguages(languages) {
     languageGrid.innerHTML = '';
     
