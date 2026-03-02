@@ -116,7 +116,6 @@ body {
     box-shadow: 0 0 15px var(--accent-primary);
 }
 
-/* Opsi 4: Scrollbar dengan gradient yang sama seperti brand */
 .scrollbar-brand::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, 
         #6366f1 0%,
