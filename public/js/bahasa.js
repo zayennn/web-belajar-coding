@@ -264,11 +264,9 @@ function createLanguageCard(language) {
     const card = document.createElement('div');
     card.className = `language-card ${!language.isActive ? 'coming-soon' : ''}`;
     
-    // Coming soon badge
     const comingSoonBadge = !language.isActive ? 
         '<span class="coming-soon-badge">Coming Soon</span>' : '';
     
-    // Progress bar (only if user logged in and has progress > 0)
     const progressBar = currentUser.isLoggedIn && language.progress > 0 ? `
         <div class="progress-section">
             <div class="progress-header">
