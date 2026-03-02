@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Add animation effect
                 outputDiv.style.animation = 'none';
-                outputDiv.offsetHeight; // Trigger reflow
+                outputDiv.offsetHeight;
                 outputDiv.style.animation = 'fadeInUp 0.5s ease-out';
             } else {
                 outputDiv.innerHTML = `
