@@ -544,7 +544,6 @@ section {
     box-shadow: 0 10px 30px rgba(0, 255, 157, 0.4);
 }
 
-
 /* Mobile Responsive */
 @media (max-width: 1024px) {
     .hero-title {
