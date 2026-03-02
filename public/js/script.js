@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     block: 'start'
                 });
 
-                // Close mobile menu after clicking
                 if (navMenu && navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
                     const icon = navToggle.querySelector('i');
