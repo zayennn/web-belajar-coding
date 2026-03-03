@@ -7,7 +7,7 @@
 
         <nav class="nav__menu" id="navMenu">
             <a href="/" class="nav__link active">Home</a>
-            <a href="{{ route('bahasa-pemrogramman') }}" class="nav__link">Bahasa Pemrogramman</a>
+            <a href="" class="nav__link">Bahasa Pemrogramman</a>
             <a href="#tentang" class="nav__link">Tentang</a>
             <a href="#roadmap" class="nav__link">Roadmap</a>
             <div class="nav-auth-mobile">
@@ -18,8 +18,18 @@
         </nav>
 
         <div class="nav-auth-desktop">
-            <a href="{{ route('login') }}" class="btn-login">Login</a>
-            <a href="{{ route('register') }}" class="btn-register">Register</a>
+            @auth
+                <span class="nav-user">Halo, {{ auth()->user()->name }}</span>
+                <a href="{{ route('dashboard') }}" class="btn-login">Dashboard</a>
+
+                <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                    @csrf
+                    <button type="submit" class="btn-register">Logout</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="btn-login">Login</a>
+                <a href="{{ route('register') }}" class="btn-register">Register</a>
+            @endauth
         </div>
 
         <label class="hamburger" id="hamburger">

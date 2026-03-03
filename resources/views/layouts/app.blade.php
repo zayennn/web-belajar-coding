@@ -31,7 +31,6 @@
 
     {{-- pages --}}
     <script src="{{ asset('js/bahasa.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/materi.css') }}">
     <script src="{{ asset('js/materi.js') }}"></script>
 </body>
 
