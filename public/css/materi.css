@@ -281,7 +281,7 @@
     padding-bottom: 0.5rem;
 }
 
-.section-title::after {
+/* .section-title::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -290,7 +290,7 @@
     height: 3px;
     background: var(--gradient-2);
     border-radius: 2px;
-}
+} */
 
 /* Objectives Box */
 .objectives-box {
