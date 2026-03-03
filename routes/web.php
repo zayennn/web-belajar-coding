@@ -19,9 +19,9 @@ Route::get('/bahasa-pemrogramman', function () {
 })->name('bahasa-pemrogramman');
 
 Route::get('/roadmap/java', function () {
-    return view('roadmap-java');
-})->name('bahasa-pemrogramman');
+    return view('roadmap');
+})->name('roadmap');
 
 Route::get('/roadmap/java/materi', function () {
-    return view('materi-java-program-pertama');
+    return view('materi');
 })->name('materi');
