@@ -17,3 +17,7 @@ Route::get('/register', function () {
 Route::get('/bahasa-pemrogramman', function () {
     return view('bahasa');
 })->name('bahasa-pemrogramman');
+
+Route::get('/roadmap/java', function () {
+    return view('roadmap-java');
+})->name('bahasa-pemrogramman');
